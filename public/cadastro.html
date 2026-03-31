@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Cadastro de pacientes</h1>
+    <h3>Nome</h3>
+    <input type="text" id="nome">
+    <h3>Email</h3>
+    <input type="email" id="email">
+    <h3>Celular</h3>
+    <input type="tel" id="telefone">
+    <button onclick="Cadastrar()">Cadastrar</button>
+
+    <script>
+        function Cadastrar(){
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const telefone = document.getElementById('telefone').value;
+
+            alert("Salvo com sucesso");
+
+            
+        }
+    </script>
+</body>
+</html>
