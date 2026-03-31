@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+
     <h1>Cadastro de pacientes</h1>
     <h3>Nome</h3>
     <input type="text" id="nome">
@@ -17,15 +19,32 @@
     <button onclick="Cadastrar()">Cadastrar</button>
 
     <script>
-        function Cadastrar(){
-            const nome = document.getElementById('nome').value;
-            const email = document.getElementById('email').value;
-            const telefone = document.getElementById('telefone').value;
+        async function Cadastrar() {
+    const nome = document.getElementById('nome').value;
+    const email = document.getElementById('email').value;
+    const telefone = document.getElementById('telefone').value;
 
-            alert("Salvo com sucesso");
+    try {
+        const response = await fetch('/cadastrar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nome, email, telefone })
+        });
 
-            
-        }
+        const data = await response.json();
+
+        console.log("Resposta do servidor:", data); // 👈 MOSTRA NO CONSOLE
+
+        alert(data.mensagem || data.erro);
+
+    } catch (err) {
+        console.error("Erro na requisição:", err);
+        alert("Erro ao conectar com o servidor");
+    }
+}
     </script>
 </body>
+
 </html>
